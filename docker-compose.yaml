@@ -32,7 +32,7 @@ services:
   web-nginx-pgsql:
     image: zabbix/zabbix-web-nginx-pgsql:alpine-5.4-latest
     ports:
-      - "8080:8080"
+      - "8001:8080"
       - "8443:8443"
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -40,7 +40,7 @@ services:
       - ./zbx_env/etc/ssl/nginx:/etc/ssl/nginx:ro
       - ./zbx_env/usr/share/zabbix/modules/:/usr/share/zabbix/modules/:ro
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+      test: ["CMD", "curl", "-f", "http://localhost:8001/"]
       interval: 10s
       timeout: 5s
       retries: 3
